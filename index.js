@@ -1,4 +1,7 @@
 const sharp = require('sharp');
+const log4js = require("log4js");
+const logger = log4js.getLogger();
+logger.level = "debug";
 
 sharp({
     create: {
@@ -7,5 +10,5 @@ sharp({
 })
     .png()
     .toBuffer()
-    .then(data => console.log(data))
-    .catch(err => console.error(err));
+    .then(data => logger.info(data))
+    .catch(err => logger.error(err));

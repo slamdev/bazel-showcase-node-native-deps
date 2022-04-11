@@ -3,7 +3,10 @@ load("@io_bazel_rules_docker//nodejs:image.bzl", "nodejs_image")
 
 nodejs_binary(
     name = "binary",
-    data = ["@npm//sharp"],
+    data = [
+        "@npm//log4js",
+        "@npm//sharp",
+    ],
     entry_point = ":index.js",
 )
 
