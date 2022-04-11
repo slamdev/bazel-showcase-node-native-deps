@@ -35,6 +35,16 @@ yarn_install(
     yarn_lock = "//:yarn.lock",
 )
 
+yarn_install(
+    name = "npm_linux",
+    environment = {
+        "npm_config_arch": "x64",
+        "npm_config_platform": "linux",
+    },
+    package_json = "//:package.json",
+    yarn_lock = "//:yarn.lock",
+)
+
 load("@io_bazel_rules_docker//nodejs:image.bzl", _nodejs_image_repos = "repositories")
 
 _nodejs_image_repos()

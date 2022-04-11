@@ -5,8 +5,10 @@ nodejs_binary(
     name = "binary",
     data = [
         "@npm//log4js",
-        "@npm//sharp",
-    ],
+    ] + select({
+        "@bazel_tools//src/conditions:linux_x86_64": ["@npm_linux//sharp"],
+        "//conditions:default": ["@npm//sharp"],
+    }),
     entry_point = ":index.js",
 )
 
